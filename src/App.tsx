@@ -31,7 +31,7 @@ function ScrollToTop() {
   return null;
 }
 
-function PageWrapper({ children }: { children: React.ReactNode }) {
+function PageWrapper({ children }: { readonly children: React.ReactNode }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -56,7 +56,7 @@ function PageLoader() {
   );
 }
 
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+const ProtectedRoute = ({ children }: { readonly children: React.ReactNode }) => {
   const { user, loading, isAdmin } = useAuth();
   if (loading) return <PageLoader />;
   if (!user || !isAdmin) return <Navigate to="/" replace />;
